@@ -1,11 +1,18 @@
 pipeline {
-   agent { docker { image 'mcr.microsoft.com/playwright/python:v1.40.0-jammy' } }
-   stages {
-      stage('e2e-tests') {
-         steps {
-            sh 'pip install -r requirements.txt'
-            sh 'pytest'
-         }
-      }
-   }
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://github.com/DmitriyKapeliukh/PlaywrightOrangeHRMLive'
+                sh 'npm install'
+                sh 'npm run testCase'
+            }
+            post {
+                always {
+                    allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
+                }
+            }
+        }
+    }
 }
