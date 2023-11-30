@@ -1,6 +1,9 @@
 pipeline {
-    agent any
-
+    agent {
+            docker {
+                image 'qawolf/playwright-ci:v1.0.0'
+            }
+        }
     stages {
         stage('Build') {
             steps {
