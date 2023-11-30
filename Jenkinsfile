@@ -1,13 +1,9 @@
 pipeline {
-    agent {
-            docker {
-                image 'qawolf/playwright-ci:v1.0.0'
-            }
-        }
+agent { docker { image 'mcr.microsoft.com/playwright:v1.40.0-jammy' } }
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'npm ci'
                 sh 'npm run testCase'
             }
             post {
