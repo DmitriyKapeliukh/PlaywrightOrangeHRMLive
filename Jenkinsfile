@@ -2,22 +2,42 @@ pipeline {
 agent {
     docker {
         image 'mcr.microsoft.com/playwright:v1.40.0-jammy'
+        reuseNode true
         }
         }
 environment {
     NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
 }
     stages {
-        stage('Build') {
+        stage('Run Test') {
             steps {
-                sh 'npm ci'
-                sh 'npm run testCase'
+                script {
+                            try {
+                                sh 'npm ci'
+                                sh 'npm run testCase'
+                                stash name: 'allure-results', includes: 'allure-results/*'
+                                currentBuild.result = 'SUCCESS'
+                            } catch (e) {
+                                stash name: 'allure-results', includes: 'allure-results/*'
+                                currentBuild.result = 'FAILED'
+                                throw e
+                            }
+                        }
             }
-            post {
-                always {
-                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-                }
+    post {
+          always {
+            unstash 'allure-results' //extract results
+            script {
+                allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'allure-results']]
+            ])
             }
+            }
+          }
         }
     }
 }
