@@ -21,14 +21,14 @@ test.describe('Login with credentials', () => {
         console.log('Login with bad credentials')
         await loginPage.signIn('badUserName', 'admin123');
         console.log('Verify login bad credentials error message')
-        await loginPage.getLoginAlert();
+        await loginPage.loginAlertToBeVisible();
     })
 
     test('Good username bad password – check validation is correct', async () => {
         console.log('Login with bad credentials')
         await loginPage.signIn('Admin', 'badPassword');
         console.log('Verify login bad credentials error message')
-        await loginPage.getLoginAlert();
+        await loginPage.loginAlertToBeVisible();
     })
 
     test('Good username and password – make it look like page object', async ({ page }) => {
