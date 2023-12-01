@@ -42,6 +42,8 @@ Create new Pipeline
 Configure Pipeline
 
 ![Jenkins configure.png](resources%2FJenkins%20configure.png)
+
+We are using Jenkinsfile from project root
 ![Jenkins configure 2.png](resources%2FJenkins%20configure%202.png)
 
 Build Pipeline
