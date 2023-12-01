@@ -37,18 +37,18 @@ Install necessary plugins:
 
 Create new Pipeline
 
-![](/Users/dmytrokapeliukh/Projects/PlaywrightOrangeHRMLive/resources/Jenkins pipeline.png)
+![Jenkins pipeline.png](resources%2FJenkins%20pipeline.png)
 
 Configure Pipeline
 
-![](/Users/dmytrokapeliukh/Projects/PlaywrightOrangeHRMLive/resources/Jenkins configure.png)
-![](/Users/dmytrokapeliukh/Projects/PlaywrightOrangeHRMLive/resources/Jenkins configure 2.png)
+![Jenkins configure.png](resources%2FJenkins%20configure.png)
+![Jenkins configure 2.png](resources%2FJenkins%20configure%202.png)
 
 Build Pipeline
-![](/Users/dmytrokapeliukh/Projects/PlaywrightOrangeHRMLive/resources/Jenkins build.png)
+![Jenkins build.png](resources%2FJenkins%20build.png)
 
 View Allure Test Report
-![](/Users/dmytrokapeliukh/Projects/PlaywrightOrangeHRMLive/resources/Jenkins Allure Report.png)
+![Jenkins Allure Report.png](resources%2FJenkins%20Allure%20Report.png)
 
 Allure Report Details
-![](/Users/dmytrokapeliukh/Projects/PlaywrightOrangeHRMLive/resources/Jenkins Allure Report Details.png)
+![Jenkins Allure Report Details.png](resources%2FJenkins%20Allure%20Report%20Details.png)
