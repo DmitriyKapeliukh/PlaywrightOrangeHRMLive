@@ -1,15 +1,16 @@
 pipeline {
-agent {
-    docker {
-        image 'mcr.microsoft.com/playwright:v1.40.0-jammy'
-        reuseNode true
-        }
-        }
+agent any
 environment {
     NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
 }
     stages {
         stage('Run Test') {
+        agent {
+            docker {
+                image 'mcr.microsoft.com/playwright:v1.40.0-jammy'
+                reuseNode true
+                }
+                }
             steps {
                 script {
                             try {
@@ -24,6 +25,8 @@ environment {
                             }
                         }
             }
+        }
+    }
     post {
           always {
             unstash 'allure-results' //extract results
@@ -38,6 +41,4 @@ environment {
             }
             }
           }
-        }
-    }
 }
